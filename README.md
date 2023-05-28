@@ -14,3 +14,16 @@ nova atualizaçao em 17 de janeiro de 2023 as 16:15 com a implementaçao de cook
 nova atualizaçao em 03 de fevereiro de 2022 as 17:00
 
 nova atualizaçao em 08 de fevereiro de 2022 as 15:05
+
+# Anexo: Instalações necessarias para poder rodar o certame
+É necessario que tenha a versão 3.9.9 do Python para poder rodar o certame
+Pode rodar no Pycharm ou no Visual Studio Code
+Para poder instalar, deverá ter as seguintes bibliotecas abaixo:
+pip install flask==2.0.2
+pegaria a 2.0.2 que é última versão compatível com a 2.0.0
+pip3 install flask~=2.0.0 
+pip3.exe install mysqlclient
+pip install mysql-connector-python==8.0.28
+pip install flask-sqlalchemy==2.5.1
+pip install flask-wtf==1.0.0
+pip install flask-bcrypt==0.7.1
