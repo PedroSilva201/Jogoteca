@@ -1,0 +1,34 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<h1>Pagina Administrativa do site Jogoteca</h1>
+<p>Aqui e onde sao editados os cadastros de todos os usuarios do site</p>
+<a class="btn btn-warning" href="{{url_for('termosLGPD') }}">LGPD</a>
+<a class="btn btn-dark" href="{{url_for('index') }}">Voltar</a>
+
+<table class="table table-striped table-responsive table-bordered">
+    <thead class="thead-default">
+        <tr>
+            <th>Nome do usuario</th>
+            <th>Apelido (Nickname)</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Edição</th>
+            <th>Remoção da lista</th>
+            <!---->
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.nickname }}</td>
+            <td>{{ usuario.LGPD}}</td>
+            <td>{{ usuario.termosID}}</td>
+            <td><a class="btn btn-outline-primary" href="{{ url_for('editar_usuario', id=usuario.id) }}">Editar</a></td>
+            <td><a class="btn btn-outline-danger" href="{{ url_for('deletar_usuario', id=usuario.id) }}">Deletar</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

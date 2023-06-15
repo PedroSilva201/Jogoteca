@@ -1,0 +1,92 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jogoteca</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+  </head>
+  <body>
+    <div class="container">
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul id="messages" class="list-unstyled">
+                {% for message in messages %}
+                    <li class="alert alert-success">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Faça seu cadastro</h1>
+        <form method="POST" action="{{ url_for('cadastrar') }}">
+            <input type="hidden" name="proxima" value="{{ proxima or url_for('index') }}">
+            {{ form.csrf_token() }}
+           <div class="form-group">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control") }}
+            <div class="form-group">
+                {{ form.nickname.label(class="form-label") }}
+                {{ form.nickname(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.endereco.label(class="form-label") }}
+                {{ form.endereco(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirmarendereco.label(class="form-label") }}
+                {{ form.confirmarendereco(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.telefone.label(class="form-label") }}
+                {{ form.telefone(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirmartelefone.label(class="form-label") }}
+                {{ form.confirmartelefone(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirmaremail.label(class="form-label") }}
+                {{ form.confirmaremail(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.senha.label(class="form-label") }}
+                {{ form.senha(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirmarsenha.label(class="form-label") }}
+                {{ form.confirmarsenha(class="form-control") }}
+            </div>
+            <div class="form-group">
+            <br/>
+            <h2>Termos de uso e política de privacidade</h2>
+            <h4>Aceitação dos termos de uso</h4>
+            <span>{{ form.LGPD }}</span>&nbsp<span>{{ form.LGPD.label(class="form-label") }}</span>
+            <p>Em caso de mudanças na politica de privacidade e dos termos de uso, será comunicado pelo telefone e/ou e-mail que foi cadastrado sobre estas mudanças, a coleta de dados serve para a realização de futuras pesquisas e se o usario estiver sendo incomodado deverá entrar em contato com a ouvidoria com o seguinte e-mail: ouvidoria@teste.com.br ou pelo telefone 0800 773 7979, de segunda a sexta-feira das 07:00 as 23:00 e dos sabados das 07:00 as 19:00 pedindo a alteração dos seus dados ou serviços equivalentes, a empresa Joagoteca não se relaciona com os clientes por meios não oficiais e todos os dados devem está armazenados para consulta interna de seus devidos fuincionarios, sob sigilo dos mesmos.</P>
+            <h6>Durante o cadastro, você queira receber e-mails?</h6>
+            <span>{{ form.termosID }}</span>&nbsp<span>{{ form.termosID.label(class="form-label") }}</span>
+            <h6>Durante o cadastro, você queira receber mensagens de texto (SMS)?</h6>
+            <span>{{ form.termosID2 }}</span>&nbsp<span>{{ form.termosID2.label(class="form-label") }}</span>
+            <h6>Versão a ser utilizada no aceite?</h6>
+            <p>Em caso de novas atualizações, os avisos deverão ser enviados para o numeros de telefone e e-mail realizado durante o cadastro</p>
+            <span>{{ form.versao }}</span>&nbsp<span>{{ form.versao.label(class="form-label") }}</span>
+            </div>
+            <span><a class="btn btn-info" href="{{url_for('termosLGPD')}}" target="_blank"><br>Clique aqui para ver os termos de</a></span>
+            <br>
+            <div class="form-group buttons">
+                {{ form.cadastro(class="btn btn-success") }}
+                <a class="btn btn-danger" href="{{ url_for('login') }}">Voltar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

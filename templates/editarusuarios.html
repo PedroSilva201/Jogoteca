@@ -1,0 +1,50 @@
+{% extends "template.html" %}
+{% block conteudo %}
+      <form class="formularioUsuario" action="{{ url_for('atualizar_usuario') }}" method="post" enctype="multipart/form-data">
+
+        <fieldset>
+          <input type="hidden" name="id" value="{{ id }}">
+          {{ form.csrf_token() }}
+          <div class="form-group inputBox">
+            {{ form.nome.label(class="form-label") }}
+            {{ form.nome(class="form-control") }}
+          </div>
+          <div class="form-group inputBox">
+            {{ form.nickname.label(class="form-label") }}
+            {{ form.nickname(class="form-control") }}
+          </div>
+          <div class="form-group inputBox">
+            {{ form.endereco.label(class="form-label") }}
+            {{ form.endereco(class="form-control") }}
+          </div>
+          <div class="form-group inputBox">
+            {{ form.telefone.label(class="form-label") }}
+            {{ form.telefone(class="form-control") }}
+          </div>
+          <div class="form-group inputBox">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control") }}
+          </div>
+          <div>Alteração nos aceites</div>
+          <div>Uso de E-mail</div>
+          <div class="form-group inputBox">
+            {{ form.termosID.label(class="form-label") }}
+            {{ form.termosID(class="form-control") }}
+          </div>
+          <div>Uso de mensagem de texto (SMS)</div>
+          <div class="form-group inputBox">
+            {{ form.termosID2.label(class="form-label") }}
+            {{ form.termosID2(class="form-control") }}
+          </div>
+          <div>Aceites</div>
+          <div class="form-group inputBox">
+            {{ form.versao.label(class="form-label") }}
+            {{ form.versao(class="form-control") }}
+          </div>
+          <div class="form-group buttons">
+            {{ form.salvar(class="btn btn-primary") }}
+            <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
+          </div>
+        </fieldset>
+      </form>
+{% endblock %}
